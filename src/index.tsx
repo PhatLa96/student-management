@@ -1,5 +1,6 @@
 import { CssBaseline } from '@material-ui/core';
 import { ConnectedRouter } from 'connected-react-router';
+import AuthContextProvider from 'features/authContext/AuthContext';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -13,22 +14,24 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <CssBaseline />
-        <App />
-      </ConnectedRouter>
+      <AuthContextProvider>
+        <ConnectedRouter history={history}>
+          <CssBaseline />
+          <App />
+        </ConnectedRouter>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </AuthContextProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
