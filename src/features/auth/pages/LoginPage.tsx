@@ -1,6 +1,6 @@
 import { Box, Button, CircularProgress, makeStyles, Paper, Typography } from '@material-ui/core';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import * as React from 'react';
+
 import { authActions } from '../authSlice';
 
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +39,7 @@ export default function LoginPage() {
         <Box mt={4}>
           <Button fullWidth variant="contained" color="primary" onClick={handleLoginClick}>
             {isLogging && <CircularProgress size={20} color="secondary" />}
-            Fake Login
+            Fake Login Saga
           </Button>
         </Box>
       </Paper>

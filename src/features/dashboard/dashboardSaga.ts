@@ -1,4 +1,3 @@
-import { yellow } from '@material-ui/core/colors';
 import { all, call, put, takeLatest } from '@redux-saga/core/effects';
 import cityApi from 'api/cityApi';
 import studentApi from 'api/studentApi';

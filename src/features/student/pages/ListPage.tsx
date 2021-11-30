@@ -43,7 +43,7 @@ export default function ListPage() {
   useEffect(() => {
     dispatch(studentActions.fetchStudentList(filter));
   }, [dispatch, filter]);
-
+  console.log('cityMap', cityMap);
   const handlePageChange = (e: any, page: number) => {
     dispatch(
       studentActions.setFilter({

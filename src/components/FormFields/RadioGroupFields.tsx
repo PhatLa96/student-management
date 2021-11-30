@@ -4,8 +4,7 @@ import {
   FormHelperText,
   FormLabel,
   Radio,
-  RadioGroup,
-  TextField,
+  RadioGroup
 } from '@material-ui/core';
 import React from 'react';
 import { Control, useController } from 'react-hook-form';

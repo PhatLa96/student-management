@@ -2,6 +2,7 @@ import { Box, Grid, LinearProgress, makeStyles, Typography } from '@material-ui/
 import { PeopleAlt } from '@material-ui/icons';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import StatisticItem from './components/StatisticItem';
 import StudentRankingList from './components/StudentRankingList';
 import Widget from './components/Widget';
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Dashboard() {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectDashboardLoading);
   const statistics = useAppSelector(selectDashboardStatistics);
@@ -87,7 +89,7 @@ export default function Dashboard() {
       {/* All student ranking */}
 
       <Box mt={4}>
-        <Typography variant="h4">All Students</Typography>
+        <Typography variant="h4">{t('All Students')}</Typography>
 
         <Box mt={2}>
           <Grid container spacing={3}>
@@ -109,7 +111,7 @@ export default function Dashboard() {
       {/* Ranking by City */}
 
       <Box mt={4}>
-        <Typography variant="h4">Ranking By City</Typography>
+        <Typography variant="h4">{t('Ranking By City')} </Typography>
 
         <Box mt={2}>
           <Grid container spacing={3}>

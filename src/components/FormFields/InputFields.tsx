@@ -1,6 +1,6 @@
 import { TextField } from '@material-ui/core';
 import { InputHTMLAttributes } from 'hoist-non-react-statics/node_modules/@types/react';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Control, useController } from 'react-hook-form';
 
 interface InputFieldsProps extends InputHTMLAttributes<HTMLInputElement> {

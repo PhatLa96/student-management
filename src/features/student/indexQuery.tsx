@@ -4,10 +4,11 @@ import { cityActions } from 'features/city/citySlice';
 import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
-import AddEditPage from './pages/AddEditPage';
-import ListPage from './pages/ListPage';
+import AddPageQuery from './pages/AddPageQuery';
+import EditPageQuery from './pages/EditPageQuery';
+import ListPageQuery from './pages/ListPageQuery';
 
-export default function StudentFeature() {
+export default function StudentFeatureQuery() {
   const match = useRouteMatch();
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -17,15 +18,15 @@ export default function StudentFeature() {
     <Box>
       <Switch>
         <Route path={match.path} exact>
-          <ListPage />
+          <ListPageQuery />
         </Route>
 
         <Route path={`${match.path}/add`}>
-          <AddEditPage />
+          <AddPageQuery />
         </Route>
 
         <Route path={`${match.path}/edit/:studentId`}>
-          <AddEditPage />
+          <EditPageQuery />
         </Route>
       </Switch>
     </Box>

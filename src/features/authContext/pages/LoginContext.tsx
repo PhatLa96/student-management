@@ -1,50 +1,8 @@
-// import { Button, Dialog, DialogActions, DialogContent, TextField } from '@material-ui/core';
-// import { ChangeEvent, Dispatch, SetStateAction, useContext, useState } from 'react';
-// import { AuthContext } from '../AuthContext';
-
-// interface LoginProps {
-//   open: boolean;
-//   handleClose: Dispatch<SetStateAction<boolean>>;
-// }
-
-// const Login = ({ open, handleClose }: LoginProps) => {
-//   //context
-//   const { toggleAuth } = useContext(AuthContext);
-
-//   //state
-//   const [userName, setUserName] = useState({ userName: '', password: '' });
-
-//   const handleSubmit = () => {
-//     toggleAuth(userName);
-//     setUserName('');
-//     handleClose(false);
-//   };
-//   return (
-//     <Dialog open={open} onClose={handleClose}>
-//       <DialogContent>
-//         <TextField label="Username" onChange={handleChange} value={userName} required />
-//       </DialogContent>
-//       <DialogActions>
-//         <Button
-//           variant="contained"
-//           color="primary"
-//           onClick={handleSubmit}
-//           disabled={userName === ''}
-//         >
-//           Submit
-//         </Button>
-//       </DialogActions>
-//     </Dialog>
-//   );
-// };
-
-// export default Login;
-import { Box, Button, CircularProgress, makeStyles, Paper, Typography } from '@material-ui/core';
-import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { Box, Button, makeStyles, Paper, Typography } from '@material-ui/core';
 import * as React from 'react';
-import { AuthContext } from '../AuthContext';
-import { ChangeEvent, Dispatch, SetStateAction, useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -77,7 +35,7 @@ export default function LoginContext() {
         </Typography>
         <Box mt={4}>
           <Button fullWidth variant="contained" color="primary" onClick={handleLoginClick}>
-            Fake Login
+            Fake Login Context
           </Button>
         </Box>
       </Paper>

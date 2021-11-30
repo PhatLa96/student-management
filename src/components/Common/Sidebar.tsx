@@ -4,8 +4,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 import { Dashboard, PeopleAlt } from '@material-ui/icons';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import InboxIcon from '@material-ui/icons/Inbox';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -45,6 +43,14 @@ export function Sidebar() {
               <PeopleAlt />
             </ListItemIcon>
             <ListItemText primary="Students" />
+          </ListItem>
+        </NavLink>
+        <NavLink className={classes.link} to="/admin/query">
+          <ListItem button>
+            <ListItemIcon>
+              <PeopleAlt />
+            </ListItemIcon>
+            <ListItemText primary="StudentsQuery" />
           </ListItem>
         </NavLink>
       </List>

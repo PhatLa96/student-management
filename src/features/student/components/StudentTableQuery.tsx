@@ -5,7 +5,7 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -16,38 +16,42 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { City, Student } from 'models';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { capitalizeString, getMarkColor } from 'utils/comon';
-
 
 const useStyles = makeStyles({
   table: {},
 });
 
 export interface StudentTableProps {
-  studentList: Student[];
+  studentList: Student[] | undefined;
   cityMap: {
     [key: string]: City;
   };
   onEdit?: (student: Student) => void;
   onRemove?: (student: Student) => void;
+  handleRemoveStudent?: (student: Student) => void;
 }
 
-export default function StudentTable({
+export default function StudentTableQuery({
   studentList,
   cityMap,
-  onEdit,
   onRemove,
+  handleRemoveStudent,
+  onEdit,
 }: StudentTableProps) {
+  const { t } = useTranslation();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [selectedStudent, setSelectedStudent] = React.useState<Student>();
-
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleRemoveClick = (student: Student) => {
     // Set selected student
+    console.log(student);
+    handleRemoveStudent?.(student);
     setSelectedStudent(student);
     setOpen(true);
 
@@ -55,6 +59,7 @@ export default function StudentTable({
   };
   const handleRemoveConfirm = (student: Student) => {
     // call onRemove
+    console.log(student);
     onRemove?.(student);
 
     // hide dialog
@@ -66,16 +71,16 @@ export default function StudentTable({
         <Table className={classes.table} size="small" aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Gender</TableCell>
-              <TableCell>Mark</TableCell>
-              <TableCell>City</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell>{t('ID')}</TableCell>
+              <TableCell>{t('Name')}</TableCell>
+              <TableCell>{t('Gender')}</TableCell>
+              <TableCell>{t('Mark')}</TableCell>
+              <TableCell>{t('City')}</TableCell>
+              <TableCell align="right">{t('Actions')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {studentList.map((student, idx) => (
+            {studentList?.map((student, idx) => (
               <TableRow key={student.id}>
                 <TableCell>{student.id}</TableCell>
                 <TableCell>{student.name}</TableCell>
@@ -83,7 +88,7 @@ export default function StudentTable({
                 <TableCell>
                   <Box color={getMarkColor(student.mark)}>{student.mark}</Box>
                 </TableCell>
-                <TableCell>{cityMap[student.city]?.name}</TableCell>
+                <TableCell>{cityMap ? cityMap[student.city]?.name : ''}</TableCell>
                 <TableCell align="right">
                   <Button
                     style={{ marginRight: 5 }}
@@ -91,14 +96,14 @@ export default function StudentTable({
                     color="primary"
                     onClick={() => onEdit?.(student)}
                   >
-                    Edit
+                    {t('Edit')}
                   </Button>
                   <Button
                     variant="contained"
                     color="secondary"
                     onClick={() => handleRemoveClick(student)}
                   >
-                    Remove
+                    {t('Remove')}
                   </Button>
                 </TableCell>
               </TableRow>

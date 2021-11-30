@@ -19,6 +19,7 @@ export default function AddEditPage() {
     (async () => {
       try {
         const reponse: Student = await studentApi.getById(studentId);
+        console.log(reponse);
         setStudent(reponse);
       } catch (error) {
         console.log('asjdygsaudy');

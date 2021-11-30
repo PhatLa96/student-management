@@ -2,17 +2,15 @@ import {
   Box,
   Button,
   FormControl,
-  Grid,
-  InputAdornment,
-  InputLabel,
+  Grid, InputLabel,
   MenuItem,
   OutlinedInput,
-  Select,
+  Select
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-
 import { City, ListParams } from 'models';
 import React from 'react';
+
 
 interface StudentFiltersProps {
   filter: ListParams;
