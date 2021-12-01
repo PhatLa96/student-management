@@ -42,7 +42,7 @@ export function Sidebar() {
             <ListItemIcon>
               <PeopleAlt />
             </ListItemIcon>
-            <ListItemText primary="Students" />
+            <ListItemText primary="StudentsSaga" />
           </ListItem>
         </NavLink>
         <NavLink className={classes.link} to="/admin/query">

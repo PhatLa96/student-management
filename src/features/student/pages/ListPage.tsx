@@ -43,7 +43,7 @@ export default function ListPage() {
   useEffect(() => {
     dispatch(studentActions.fetchStudentList(filter));
   }, [dispatch, filter]);
-  console.log('cityMap', cityMap);
+
   const handlePageChange = (e: any, page: number) => {
     dispatch(
       studentActions.setFilter({
@@ -54,12 +54,10 @@ export default function ListPage() {
   };
 
   const handleSearchChange = (newFilter: ListParams) => {
-    console.log('Search Change Newfilter');
     dispatch(studentActions.setFilterWithDebouce(newFilter));
   };
 
   const handleFilterChange = (newFilter: ListParams) => {
-    console.log('Search Change Newfilter');
     dispatch(studentActions.setFilter(newFilter));
   };
 
@@ -87,7 +85,7 @@ export default function ListPage() {
       {loading && <LinearProgress />}
 
       <Box mb={4} className={classes.title}>
-        <Typography variant="h4">Students</Typography>
+        <Typography variant="h4">StudentsSaga</Typography>
         <Link to={`${match.url}/add`} style={{ textDecoration: 'none' }}>
           <Button variant="contained" color="primary">
             Add new student

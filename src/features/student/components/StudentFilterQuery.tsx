@@ -14,19 +14,18 @@ import React from 'react';
 
 interface StudentFiltersProps {
   filter: ListParams;
-  cityList: City[];
+  cityList?: City[];
   onChange?: (newFilter: ListParams) => void;
   onSearchChange?: (newFilter: ListParams) => void;
 }
 
-export default function StudentFilters({
+export default function StudentFiltersQuery({
   filter,
   cityList,
   onChange,
   onSearchChange,
 }: StudentFiltersProps) {
   const searchRef = React.useRef<HTMLInputElement>();
-
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!onSearchChange) return;
@@ -36,6 +35,7 @@ export default function StudentFilters({
       name_like: e.target.value,
       _page: 1,
     };
+
     onSearchChange(newFilter);
   };
 
@@ -110,7 +110,7 @@ export default function StudentFilters({
               <MenuItem value="">
                 <em>All</em>
               </MenuItem>
-              {cityList.map((city) => (
+              {cityList?.map((city) => (
                 <MenuItem key={city.code} value={city.code}>
                   {city.name}
                 </MenuItem>
