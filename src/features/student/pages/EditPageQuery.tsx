@@ -45,7 +45,7 @@ export default function EditPageQuery() {
   return (
     <Box>
       {loadingUpdate && <LinearProgress />}
-      <Link to="/admin/students">
+      <Link to="/admin/query">
         <Typography variant="caption" style={{ display: 'flex', alignItems: 'center' }}>
           <ChevronLeft /> &nbsp;Back to student list
         </Typography>
