@@ -11,6 +11,7 @@ import {
 import { Search } from '@material-ui/icons';
 import { City, ListParams } from 'models';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface StudentFiltersProps {
   filter: ListParams;
@@ -26,7 +27,7 @@ export default function StudentFiltersQuery({
   onSearchChange,
 }: StudentFiltersProps) {
   const searchRef = React.useRef<HTMLInputElement>();
-
+  const { t } = useTranslation();
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!onSearchChange) return;
 
@@ -85,9 +86,9 @@ export default function StudentFiltersQuery({
   return (
     <Box>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <FormControl fullWidth variant="outlined" size="small">
-            <InputLabel htmlFor="searchByName">Search by name</InputLabel>
+            <InputLabel htmlFor="searchByName">{t('Search by name')}</InputLabel>
             <OutlinedInput
               id="outlined-adornment-amount"
               label="Search by name"
@@ -98,9 +99,9 @@ export default function StudentFiltersQuery({
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={3}>
           <FormControl fullWidth variant="outlined" size="small">
-            <InputLabel id="filterByCity">Filter by city</InputLabel>
+            <InputLabel id="filterByCity">{t('Filter by city')}</InputLabel>
             <Select
               labelId="filterByCity"
               value={filter.city || ''}
@@ -119,9 +120,9 @@ export default function StudentFiltersQuery({
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={3}>
           <FormControl fullWidth variant="outlined" size="small">
-            <InputLabel id="sortBy">Sort</InputLabel>
+            <InputLabel id="sortBy">{t('Sort')}</InputLabel>
             <Select
               labelId="sortBy"
               value={filter._sort ? `${filter._sort}.${filter._order}` : ''}
@@ -129,20 +130,20 @@ export default function StudentFiltersQuery({
               label="Sort"
             >
               <MenuItem value="">
-                <em>No sort</em>
+                <em> {t('No sort')}</em>
               </MenuItem>
 
-              <MenuItem value="name.asc">Name ASC</MenuItem>
-              <MenuItem value="name.desc">Name DESC</MenuItem>
-              <MenuItem value="mark.asc">Mark ASC</MenuItem>
-              <MenuItem value="mark.desc">Mark DESC</MenuItem>
+              <MenuItem value="name.asc">{t('Name ASC')}</MenuItem>
+              <MenuItem value="name.desc">{t('Name DESC')}</MenuItem>
+              <MenuItem value="mark.asc">{t('Mark ASC')}</MenuItem>
+              <MenuItem value="mark.desc">{t('Mark DESC')}</MenuItem>
             </Select>
           </FormControl>
         </Grid>
 
         <Grid item xs={12} md={2}>
           <Button onClick={handleClearFilter} variant="outlined" color="primary" fullWidth>
-            Clear
+            {t('Clear')}
           </Button>
         </Grid>
       </Grid>

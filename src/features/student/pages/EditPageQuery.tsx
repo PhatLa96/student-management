@@ -31,15 +31,15 @@ export default function EditPageQuery() {
   const handleStudentFormSubmit = async (data: Student) => {
     //TODO:handle submit here
 
-    console.log(data);
     await mutateAsync({ ...data });
+
     queryClient.invalidateQueries('studentById');
 
     // Toast success
 
     toast.success('Save student successfully');
 
-    history.push('/admin/query');
+    history.goBack();
   };
 
   return (
